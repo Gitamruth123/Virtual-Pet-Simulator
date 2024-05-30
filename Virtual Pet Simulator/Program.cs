@@ -10,9 +10,9 @@ namespace VirtualPet
         { // Variable declaration
             string petType = " ";
             string petName = " ";
-            int hunger = 6;
-            int happiness = 7;
-            int health = 8;
+            int hunger = 5;
+            int happiness = 6;
+            int health = 7;
 
             // Pet Creation
             Console.WriteLine("Please choose a pet type: ");
@@ -30,7 +30,7 @@ namespace VirtualPet
             while (true)
             {
                 // To display Pet status
-                Console.WriteLine("\nPet's status -Hunger:" + hunger + " " + "Happiness:" + happiness + " " + "Health:" + health);
+                Console.WriteLine("\nPet's status - Hunger:" + hunger + " " + "Happiness:" + happiness + " " + "Health:" + health);
 
                 // Pet Care Actions
                 //Console.WriteLine("\nChoose an action: 1.Feed 2.Play 3.Rest 4.Exit");
@@ -100,7 +100,39 @@ namespace VirtualPet
                 {
                     Console.WriteLine("Invalid choice.Please choose again.");
                 }
+                // Time based changes
+                /*hunger += 1;
+                if (hunger > 10)
+                {
+                    hunger = 10;
+                }
+                //Action play
 
+                happiness -= 1;
+                if(happiness < 0)
+                {
+                    happiness = 0;
+                }*/
+                //Status checking
+
+                if (hunger == 10)
+                {
+                    health -= 1;
+                    if (health < 0)
+                    {
+                        health = 0;
+                    }
+                    Console.WriteLine(petName + " is very hungry! Health is decreasing.");
+                }
+                if (happiness == 0)
+                {
+                    health -= 1;
+                    if (health < 0)
+                    {
+                        health = 0;
+                    }
+                    Console.WriteLine(petName + " is very unhappy! Health is decreasing.");
+                }
 
 
             }
