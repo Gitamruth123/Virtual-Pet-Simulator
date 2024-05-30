@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Xml.Serialization;
 
 namespace VirtualPet
 {
@@ -15,9 +16,9 @@ namespace VirtualPet
 
             // Pet Creation
             Console.WriteLine("Please choose a pet type: ");
-            Console.WriteLine("Cat");
-            Console.WriteLine("Dog");
-            Console.WriteLine("Rabbit");
+            Console.WriteLine("1. Cat");
+            Console.WriteLine("2. Dog");
+            Console.WriteLine("3. Rabbit");
             petType = Console.ReadLine();
 
             Console.WriteLine("You have choosen a" + " " + petType + "." + " " + "what would you like to name your pet?");
@@ -32,26 +33,76 @@ namespace VirtualPet
                 Console.WriteLine("\nPet's status -Hunger:" + hunger + " " + "Happiness:" + happiness + " " + "Health:" + health);
 
                 // Pet Care Actions
-                Console.WriteLine("\nChoose an action: 1.Feed 2.Play 3.Rest 4.Exit");
+                //Console.WriteLine("\nChoose an action: 1.Feed 2.Play 3.Rest 4.Exit");
+                Console.WriteLine("\nChoose an action:");
+                Console.WriteLine("1. Feed");
+                Console.WriteLine("2. Play");
+                Console.WriteLine("3. Rest");
+                Console.WriteLine("4. Exit");
                 string action = Console.ReadLine();
 
                 if (action == "1")
                 {
                     //Feed
                     hunger -= 2;
-                    if(hunger < 0)
+                    if (hunger < 0)
                     {
                         hunger = 0;
                     }
                     health += 1;
-                    if(health > 10)
+                    if (health > 10)
                     {
                         health = 10;
-   
+
                     }
 
-                    Console.WriteLine(petName + " has been fed.");
+                    Console.WriteLine(petName + " has been fed. Decreases hunger,slightly increases health ");
                 }
+                //Play
+
+                else if (action == "2")
+                {
+                    happiness += 2;
+                    if (happiness > 10)
+                    {
+                        happiness = 10;
+                    }
+                    hunger += 1;
+                    if (hunger > 10)
+                    {
+                        hunger = 10;
+                    }
+                    Console.WriteLine(petName + " is playing happily. Increases happiness,slightly increases hunger ");
+                }
+                // Rest
+                else if (action == "3")
+                {
+                    health += 2;
+                    if (health > 10)
+                    {
+                        health = 10;
+                    }
+                    happiness -= 1;
+                    if (happiness < 0)
+                    {
+                        happiness = 0;
+                    }
+                    Console.WriteLine(petName + " is resting. Improves health,decreases happiness slightly ");
+                } 
+                // Exit
+
+                else if (action == "4")
+                {
+                    Console.WriteLine("Goodbye!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice.Please choose again.");
+                }
+
+
+
             }
         }
     }
