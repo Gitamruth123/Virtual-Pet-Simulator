@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Xml.Serialization;
 
 namespace VirtualPet
 {
@@ -33,7 +31,7 @@ namespace VirtualPet
                 Console.WriteLine("\nPet's status - Hunger:" + hunger + " " + "Happiness:" + happiness + " " + "Health:" + health);
 
                 // Pet Care Actions
-                //Console.WriteLine("\nChoose an action: 1.Feed 2.Play 3.Rest 4.Exit");
+                
                 Console.WriteLine("\nChoose an action:");
                 Console.WriteLine("1. Feed");
                 Console.WriteLine("2. Play");
@@ -133,7 +131,13 @@ namespace VirtualPet
                     }
                     Console.WriteLine(petName + " is very unhappy! Health is decreasing.");
                 }
+                //Warning
 
+                if (health == 0)
+                {
+                    Console.WriteLine(petName + " has died due to poor health.End of the game.");
+                    break;
+                }
 
             }
         }
