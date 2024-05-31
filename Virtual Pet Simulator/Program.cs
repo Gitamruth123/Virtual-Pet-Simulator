@@ -8,9 +8,9 @@ namespace VirtualPet
         { // Variable declaration
             string petType = " ";
             string petName = " ";
-            int hunger = 5;
-            int happiness = 6;
-            int health = 7;
+            int hunger =2;
+            int happiness = 7;
+            int health = 1;
 
             // Pet Creation
             Console.WriteLine("Please choose a pet type: ");
@@ -18,8 +18,15 @@ namespace VirtualPet
             Console.WriteLine("2. Dog");
             Console.WriteLine("3. Rabbit");
             petType = Console.ReadLine();
-
-            Console.WriteLine("You have choosen a" + " " + petType + "." + " " + "what would you like to name your pet?");
+            if (petType == "1")
+            {
+                Console.WriteLine("You have choosen a Cat, what would you like to name your pet?");
+            }else if (petType == "2") { Console.WriteLine("You have choosen a Dog, what would you like to name your pet?"); }
+            else if (petType == "3") { Console.WriteLine("You have choosen a Rabbit, what would you like to name your pet?"); }
+            else
+            {
+                Console.WriteLine("Invalid option Selected");
+            }
             petName = Console.ReadLine();
 
             Console.WriteLine("\nWelcome," + " " + petName + "." + "Lets take good care of him");
@@ -27,50 +34,71 @@ namespace VirtualPet
             // Game start here
             while (true)
             {
-                // To display Pet status
-                Console.WriteLine("\nPet's status - Hunger:" + hunger + " " + "Happiness:" + happiness + " " + "Health:" + health);
-
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("             Pet's status               ");
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("              Hunger:" + hunger );
+                Console.WriteLine("           Happiness:" + happiness);
+                Console.WriteLine("              Health:" + health);
+                Console.WriteLine("\n");
+              
                 // Pet Care Actions
-                
-                Console.WriteLine("\nChoose an action:");
-                Console.WriteLine("1. Feed");
-                Console.WriteLine("2. Play");
-                Console.WriteLine("3. Rest");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("              Main Menu                 ");
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("           1.Feed "+ petName);
+                Console.WriteLine("           2.Play with "+petName);
+                Console.WriteLine("           3.Let "+petName+" Rest");
+                Console.WriteLine("           4.Exit");
+                Console.WriteLine("----------------------------------------");
                 string action = Console.ReadLine();
 
+                
                 if (action == "1")
                 {
-                    //Feed
-                    hunger -= 2;
-                    if (hunger < 0)
+                    if (hunger > 0)
                     {
-                        hunger = 0;
+                        //Feed
+                        hunger -= 2;
+                        if (hunger < 0)
+                        {
+                            hunger = 0;
+                        }
+                        health += 1;
+                        if (health > 10)
+                        {
+                            health = 10;
+
+                        }
+
+                        Console.WriteLine(petName + " has been fed. Decreases hunger,slightly increases health ");
                     }
-                    health += 1;
-                    if (health > 10)
+                    else
                     {
-                        health = 10;
-
+                        Console.WriteLine(petName + " is full. he cant eat food ");
                     }
-
-                    Console.WriteLine(petName + " has been fed. Decreases hunger,slightly increases health ");
                 }
                 //Play
 
                 else if (action == "2")
                 {
-                    happiness += 2;
-                    if (happiness > 10)
-                    {
-                        happiness = 10;
-                    }
-                    hunger += 1;
-                    if (hunger > 10)
-                    {
-                        hunger = 10;
-                    }
-                    Console.WriteLine(petName + " is playing happily. Increases happiness,slightly increases hunger ");
+                    
+                        happiness += 2;
+                        if (happiness > 10)
+                        {
+                            happiness = 10;
+                        }
+                        hunger += 1;
+                        if (hunger > 10)
+                        {
+                            hunger = 10;
+                        }
+                        if (health != 0)
+                        {
+                            Console.WriteLine(petName + " is playing happily. Increases happiness,slightly increases hunger ");
+                        }
+                   
+                    
                 }
                 // Rest
                 else if (action == "3")
@@ -86,7 +114,7 @@ namespace VirtualPet
                         happiness = 0;
                     }
                     Console.WriteLine(petName + " is resting. Improves health,decreases happiness slightly ");
-                } 
+                }
                 // Exit
 
                 else if (action == "4")
@@ -98,46 +126,42 @@ namespace VirtualPet
                 {
                     Console.WriteLine("Invalid choice.Please choose again.");
                 }
-                // Time based changes
-                /*hunger += 1;
-                if (hunger > 10)
-                {
-                    hunger = 10;
-                }
-                //Action play
-
-                happiness -= 1;
-                if(happiness < 0)
-                {
-                    happiness = 0;
-                }*/
-                //Status checking
-
-                if (hunger == 10)
-                {
-                    health -= 1;
-                    if (health < 0)
-                    {
-                        health = 0;
-                    }
-                    Console.WriteLine(petName + " is very hungry! Health is decreasing.");
-                }
-                if (happiness == 0)
-                {
-                    health -= 1;
-                    if (health < 0)
-                    {
-                        health = 0;
-                    }
-                    Console.WriteLine(petName + " is very unhappy! Health is decreasing.");
-                }
-                //Warning
 
                 if (health == 0)
                 {
                     Console.WriteLine(petName + " has died due to poor health.End of the game.");
                     break;
                 }
+                else
+                {
+                    if (happiness == 10)
+                    {
+                        Console.WriteLine(petName + " is very happy. End of the game.");
+                        break;
+                    }
+                    if (hunger == 10)
+                    {
+                        health -= 1;
+                        if (health < 0)
+                        {
+                            health = 0;
+                        }
+                        Console.WriteLine(petName + " is very hungry! Health is decreasing.");
+                    }
+
+                    if (happiness == 0)
+                    {
+                        health -= 1;
+                        if (health < 0)
+                        {
+                            health = 0;
+                        }
+                        Console.WriteLine(petName + " is very unhappy! ");
+                    }
+                }
+                
+
+               
 
             }
         }
