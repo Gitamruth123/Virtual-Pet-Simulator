@@ -8,8 +8,8 @@ namespace VirtualPet
         { // Variable declaration
             string petType = " ";
             string petName = " ";
-            int hunger =2;
-            int happiness = 7;
+            int hunger =8;
+            int happiness = 4;
             int health = 1;
 
             // Pet Creation
