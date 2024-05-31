@@ -15,3 +15,18 @@ The game work as follows
 
 Start the game by choosing a pet and give your pet a name.The game represents the current status of pet's hunger,happiness and health.Choose an action from main menu to play,feed and relax the pet and this effects the pet status accordingly.This game ends when the pet's health become zero or pet become unhappy.
 
+Set up instructions
+
+Open Visual Studio
+Create a new Console application.
+Name your project.
+Link it to the github 
+Open the program.cs file
+Build the code
+From the Git option create a repository.
+Commit and push the changes to the repository.
+Build and run the application
+On the output console first choose a pet,name it and display a welcome message
+Then the main menu gets displayed
+choose the action feed ,play, rest .According to the action the status of the health,hunger,happiness changes.
+when the happiness increases the game ends.
